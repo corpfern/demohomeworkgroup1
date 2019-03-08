@@ -1,0 +1,32 @@
+<!--
+  Generated template for the UpdatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="vv">
+    <ion-title text-center>Update</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="newStudent" (ngSubmit)="update()">
+        <ion-item>
+          <ion-label>NAME</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>AGE</ion-label>
+          <ion-input type="number" formControlName="age"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>PROFILE (URL)</ion-label>
+          <ion-input type="text" formControlName="profileImage"></ion-input>
+        </ion-item>
+        <div>
+        <button ion-button block type="submit" color="vv">ตกลง</button>
+        </div>
+      </form>
+
+</ion-content>

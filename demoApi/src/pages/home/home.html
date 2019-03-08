@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title text-center>
+      ข้อมูลสินค้า
+    </ion-title>
+    <ion-buttons end >
+      <button ion-button (click)="Cart()">
+        <ion-icon name="md-cart"></ion-icon>        
+       
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card color="secondary" padding>
+    <ion-row>
+      <ion-col col-3>
+        <h3>ลำดับ</h3>
+      </ion-col>
+      <ion-col col-3>
+        <h3>ชื่อ</h3>
+      </ion-col>
+      <ion-col col-3>
+        <h3>ราคา</h3>
+      </ion-col>
+      <ion-col col-3>
+        <h3>สั่งซื้อ</h3>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let s of students;let i = index">
+      <ion-row>
+        <ion-col col-3 align-self-center>
+          {{ i+1 }}
+        </ion-col>
+        <ion-col col-3 align-self-center>
+          {{ s.name }}
+        </ion-col>
+        <ion-col col-3 align-self-center>
+          {{ s.age }}
+        </ion-col>
+        <ion-col col-3 align-self-center>
+
+          <!-- (click)="goInfoPage(s.id)" อีเว้นคลิกด้านบน-->
+
+          <!-- <button ion-button color="vv" (click)="delete(s.id)">ซื้อ</button> -->
+          <button ion-button color="vv" (click)="goInfoPage(s.id)">ซื้อ</button>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-item>
+    
+  </ion-list>
+  <button ion-button block (click)="goCreate()">จัดการข้อมูล</button>
+</ion-content>
