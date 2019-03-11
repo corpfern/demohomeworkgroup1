@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { CallApiProvider } from '../../providers/call-api/call-api';
 
 /**
@@ -16,27 +16,27 @@ import { CallApiProvider } from '../../providers/call-api/call-api';
   templateUrl: 'create.html',
 })
 export class CreatePage {
+  newProduct: FormGroup;
 
-  newStudent: FormGroup;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FormBuilder, public callApi: CallApiProvider) {
-    this.newStudent = fb.group({
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FormBuilder, public CallApi: CallApiProvider) {
+    this.newProduct = fb.group({
       'id': null,
-      'name': [null, Validators.required],
-      'age': [null, Validators.required],
-      'profileImage':[null, Validators.required],
+      'productName': [null,Validators.required],
+      'price': [null,Validators.required],
+      'pieces': 0,
+
     })
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad CreatePage');
   }
-  create() {
-    this.callApi.CreateStudent(this.newStudent.value)
-      .subscribe(data => {
-        console.log("Createted");
-        this.navCtrl.pop();
-      })
-  }
 
+  createProduct() {
+    this.CallApi.CreateProduct(this.newProduct.value)
+    .subscribe(data => {
+      console.log("Create.");
+      this.navCtrl.pop();
+    });
+  }
 }

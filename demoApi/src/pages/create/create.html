@@ -5,28 +5,26 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar text-center color="cc">
-    <ion-title>เพิ่มข้อมูลสินค้า</ion-title>
+  <ion-navbar>
+    <ion-title>เพิ่มรายการสินค้า</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="newStudent" (ngSubmit)="create()">
+  <form [formGroup]="newProduct" (ngSubmit)="createProduct()">
+
     <ion-item>
-      <ion-label>ชื่อสินค้า</ion-label>
-      <ion-input type="text" formControlName="name"></ion-input>
+      <ion-label fixed>ชื่อรายการสินค้า</ion-label>
+      <ion-input type="text" formControlName="productName"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-label>ราคา</ion-label>
-      <ion-input type="number" formControlName="age"></ion-input>
+      <ion-label fixed>ราคา</ion-label>
+      <ion-input type="number" formControlName="price"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>รูปสินค้า (URL)</ion-label>
-      <ion-input type="text" formControlName="profileImage"></ion-input>
-    </ion-item>
-    <div>
-    <button ion-button block type="submit" [disabled]="newStudent.invalid">ตกลง</button>
+    
+    <div padding>
+      <button ion-button block type="submit" [disabled]="newProduct.invalid">เพิ่มรายการ</button>
     </div>
   </form>
-
 </ion-content>

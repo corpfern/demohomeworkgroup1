@@ -14,25 +14,24 @@ export class CallApiProvider {
     console.log('Hello CallApiProvider Provider');
   }
 
-  public GetAllStudents() {
-    return this.http.get('https://localhost:5001/api/Classroom/GetAllStudents');
+  public GetAllProducts()
+  {
+      return this.http.get('https://localhost:5001/api/Products/GetAllProducts');
   }
-  public GetStudent(id :string) {
-    return this.http.get('https://localhost:5001/api/Classroom/GetStudent/' + id);
+  public GetProductbyId(id :string){
+    return this.http.get('https://localhost:5001/api/Prosucts/GetProductbyId/'+ id);
   }
-  public CreateStudent(newStudent : any) {
-    return this.http.post('https://localhost:5001/api/Classroom/CreateStudent',newStudent);
+  public CreateProduct(newProduct : any){
+    return this.http.post('https://localhost:5001/api/Products/CreateProduct',newProduct);
   }
-  public UpdateStudent(newStudent : any) {
-    return this.http.put('https://localhost:5001/api/Classroom/UpdateStudent',newStudent);
+  public UpdateProduct(newProduct : any){
+    return this.http.put('https://localhost:5001/api/Prosucts/UpdateProduct',newProduct);
   }
-  public DeleteStudent(id: string){
-    return this.http.delete('https://localhost:5001/api/Classroom/DeleteStudent/'+id);
-  }
-  public CreatePricesx(newStudent : any) {
-    return this.http.post('https://localhost:5001/api/Classroom/CreatePricesx',newStudent);
-  }
-  public GetAllPrice() {
-    return this.http.get('https://localhost:5001/api/Classroom/GetAllPrice');
+  // public DeleteStudent(id:string){
+  //   return this.http.delete('https://localhost:5001/api/Prosucts/DeleteStudent/'+ id);
+  // }
+
+  public AddToCart(newCart : any) {
+    return this.http.post('https://localhost:5001/api/ShoppingCart/Create',newCart);
   }
 }

@@ -1,0 +1,61 @@
+<!--
+  Generated template for the CartsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>คลังสินค้าที่ซื้อ</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content text-center>
+      <ion-row text-center>
+        <ion-col col-4>
+          <h2>ชื่อสินค้า</h2>
+        </ion-col>
+        <ion-col col-3>
+          <h2>จำนวน</h2>
+        </ion-col>
+        <ion-col col-2>
+          <h2>ราคา</h2>
+        </ion-col>
+        <ion-col col-3>
+          <h2>รวม</h2>
+        </ion-col>
+       
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item *ngFor="let n of name; let i = index; let p = index">
+    <ion-row text-center>
+      <ion-col col-4>
+        {{ n }}
+      </ion-col>
+      <ion-col >
+        {{ sum[p] }}
+      </ion-col>
+      <ion-col col-2>
+        {{ price[i] }}
+      </ion-col>
+      <ion-col col-3>
+        {{ price[i] * sum[p] }}
+      </ion-col>
+    </ion-row>
+    <!-- {{n}}
+      {{price[i]}}
+      {{sum[p]}} -->
+  </ion-item>
+    <div>
+      <ion-item>
+          ResurltTotal : {{ totalprice }} บาท
+        </ion-item>
+     </div>
+ 
+
+ 
+</ion-content>

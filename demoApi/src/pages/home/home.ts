@@ -1,49 +1,57 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { CallApiProvider } from '../../providers/call-api/call-api';
+import { Component } from "@angular/core";
+import { NavController } from "ionic-angular";
+import { CallApiProvider } from "../../providers/call-api/call-api";
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { identifierModuleUrl } from "@angular/compiler";
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: "page-home",
+  templateUrl: "home.html"
 })
 export class HomePage {
-
-  students: any;
-
-  constructor(public navCtrl: NavController, public callApi: CallApiProvider) {
-
+  products: any;
+  newCart: FormGroup;
+  productName: any = [];
+  price: any = [];
+  sum: any = [];
+  constructor(
+    public fb: FormBuilder,
+    public navCtrl: NavController,
+    public CallApi: CallApiProvider
+  ) {
+    this.newCart = fb.group({
+      'sum': null
+    });
   }
 
   ionViewDidEnter() {
     this.get();
-
   }
 
   get() {
-    this.callApi.GetAllStudents().subscribe(data => {
-      this.students = data;
-      console.log(this.students);
-
+    this.CallApi.GetAllProducts().subscribe(data => {
+      this.products = data;
+      console.log(this.products);
     });
   }
-  goInfoPage(id: string) {
-    this.navCtrl.push("InfoPage", { id: id });
-  }
-  goCreate() {
-    this.navCtrl.push('CreatePage');
-  }
-  delete(id: string) {
-    this.callApi.DeleteStudent(id)
-      .subscribe(data => {
-        console.log("deleted.");
-        this.get();
 
-      })
+  goCreatePage() {
+    console.log("test");
+    this.navCtrl.push("CreatePage");
   }
-  goitem(){
-    this.navCtrl.push('ItemPage');
+
+  carts(productName: string, price: any,sum:any) {
+    this.productName.push(productName);
+    console.log(productName);
+    this.price.push(price);
+    console.log(price);
+    this.sum.push(this.newCart.get('sum').value)
+    console.log(this.sum);
+    
+
   }
-  Cart(){
-    this.navCtrl.push('CartPage');
+
+  addToCart() {
+    this.navCtrl.push("CartsPage", {productName: this.productName,price: this.price,sum:this.sum});
   }
 }
